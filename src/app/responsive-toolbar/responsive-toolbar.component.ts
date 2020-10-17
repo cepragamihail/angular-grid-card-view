@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input,  OnInit, Output } from "@angular/core";
 import { MenuItem } from "../menu-item";
 
 @Component({
@@ -7,9 +7,10 @@ import { MenuItem } from "../menu-item";
   styleUrls: ["./responsive-toolbar.component.css"]
 })
 export class ResponsiveToolbarComponent implements OnInit {
+  @Input() title: string;
   gridColumns = 3;
   @Output() setGridColumns = new EventEmitter();
-  title = "Angular Grid Card View";
+  
 
   toggleGridColumns() {
     this.gridColumns = this.gridColumns === 3 ? 4 : 3;
