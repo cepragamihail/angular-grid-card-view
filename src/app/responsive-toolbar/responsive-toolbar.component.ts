@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { MenuItem } from "../menu-item";
 
 @Component({
@@ -7,30 +7,57 @@ import { MenuItem } from "../menu-item";
   styleUrls: ["./responsive-toolbar.component.css"]
 })
 export class ResponsiveToolbarComponent implements OnInit {
+  gridColumns = 3;
+  @Output() setGridColumns = new EventEmitter();
+  title = "Angular Grid Card View";
+
+  toggleGridColumns() {
+    this.gridColumns = this.gridColumns === 3 ? 4 : 3;
+    this.setGridColumns.emit();
+  }
+
   menuItems: MenuItem[] = [
     {
       label: "Sign Up",
-      icon: "login"
+      icon: "login",
+      showOnMobile: true,
+      showOnTablet: true,
+      showOnDesktop: true
     },
     {
       label: "About",
-      icon: "help"
+      icon: "help",
+      showOnMobile: false,
+      showOnTablet: true,
+      showOnDesktop: true
     },
     {
       label: "Pricing",
-      icon: "attach_money"
+      icon: "attach_money",
+      showOnMobile: false,
+      showOnTablet: false,
+      showOnDesktop: true
     },
     {
       label: "Docs",
-      icon: "notes"
+      icon: "notes",
+      showOnMobile: false,
+      showOnTablet: true,
+      showOnDesktop: true
     },
     {
       label: "Showcase",
-      icon: "slideshow"
+      icon: "slideshow",
+      showOnMobile: false,
+      showOnTablet: false,
+      showOnDesktop: true
     },
     {
       label: "Blog",
-      icon: "rss_feed"
+      icon: "rss_feed",
+      showOnMobile: false,
+      showOnTablet: false,
+      showOnDesktop: false
     }
   ];
   constructor() {}
